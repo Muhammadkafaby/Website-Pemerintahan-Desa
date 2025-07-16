@@ -19,6 +19,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $settings = Setting::all()->pluck('value', 'key');
+        $post->load('user');
         return Inertia::render('Posts/Show', compact('settings', 'post'));
     }
 }
